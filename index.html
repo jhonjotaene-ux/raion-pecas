@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RaiOn Peças Elétricas Online - Peças automotivas elétricas com as melhores marcas. Bobinas, velas, baterias, bombas, sensores, lâmpadas e muito mais." />
+  <meta name="keywords" content="peças elétricas automotivas, bobina de ignição, velas, baterias, sensores, lâmpadas automotivas, Fiat, Ford, GM, Volkswagen" />
+  <meta name="author" content="RaiOn Peças Elétricas Online" />
+  <title>RaiOn Peças Elétricas Online | Peças Automotivas</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- ===== TOP HEADER BAR ===== -->
+<header class="site-header">
+  <div class="header-top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <a href="https://wa.me/41998431821" class="contact-link" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+          <span>(41) 99843-1821</span>
+        </a>
+        <a href="mailto:contato@raionpecas.com.br" class="contact-link">
+          <i class="fas fa-envelope"></i>
+          <span>contato@raionpecas.com.br</span>
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <div class="social-links">
+          <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="auth-buttons">
+          <button class="btn-auth btn-login" onclick="openModal('loginModal')"><i class="fas fa-user"></i> Entrar</button>
+          <button class="btn-auth btn-register" onclick="openModal('registerModal')">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-main">
+    <div class="container">
+      <div class="header-logo">
+        <a href="index.html">
+          <img src="assests/logo/logo-raion-pecas.png" alt="RaiOn Peças Elétricas Online" class="logo-img" />
+        </a>
+      </div>
+      
+
+      <!-- Search bar inside header -->
+      <div class="header-search-wrap">
+        <div class="search-tabs">
+          <button class="search-tab active" data-tab="placa" onclick="switchSearchTab('placa')">
+            <i class="fas fa-car"></i> Buscar por Placa
+          </button>
+          <button class="search-tab" data-tab="chassis" onclick="switchSearchTab('chassis')">
+            <i class="fas fa-barcode"></i> Buscar por Chassis
+          </button>
+        </div>
+        <div class="search-input-wrap">
+          <div class="search-pane active" id="pane-placa">
+            <input type="text" id="input-placa" class="search-field" placeholder="Digite a placa: ABC-1234 ou ABC1D23" maxlength="8" oninput="formatPlaca(this)" />
+          </div>
+          <div class="search-pane" id="pane-chassis">
+            <input type="text" id="input-chassis" class="search-field" placeholder="Digite o chassis/VIN (17 caracteres)" maxlength="17" oninput="formatChassis(this)" />
+          </div>
+          <button class="btn-search" onclick="doSearch()">
+            <i class="fas fa-bolt"></i> Buscar
+          </button>
+        </div>
+        <p class="search-hint" id="search-hint"></p>
+      </div>
+      <div class="trust-bar">
+  ✔ Enviamos para todo Brasil | ✔ Garantia nas peças | ✔ Suporte via WhatsApp
+</div>
+
+      <div class="header-actions">
+        <a href="#" class="action-btn cart-btn" onclick="toggleCart(event)">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge" id="cart-count">0</span>
+        </a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="main-nav" id="main-nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="#" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+        <li class="has-dropdown">
+          <a href="#categories" class="nav-link"><i class="fas fa-bolt"></i> Peças Elétricas <i class="fas fa-chevron-down fa-xs"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" onclick="filterCategory('bobina')"><i class="fas fa-fire"></i> Bobina de Ignição</a></li>
+            <li><a href="#" onclick="filterCategory('velas')"><i class="fas fa-star"></i> Velas de Ignição</a></li>
+            <li><a href="#" onclick="filterCategory('baterias')"><i class="fas fa-battery-full"></i> Baterias</a></li>
+            <li><a href="#" onclick="filterCategory('bomba')"><i class="fas fa-tint"></i> Bomba de Combustível</a></li>
+            <li><a href="#" onclick="filterCategory('sensores')"><i class="fas fa-microchip"></i> Sensores</a></li>
+            <li><a href="#" onclick="filterCategory('lampadas')"><i class="fas fa-lightbulb"></i> Lâmpadas</a></li>
+            <li><a href="#" onclick="filterCategory('modulos')"><i class="fas fa-server"></i> Módulos</a></li>
+            <li><a href="#" onclick="filterCategory('chicotes')"><i class="fas fa-plug"></i> Chicotes Elétricos</a></li>
+            <li><a href="#" onclick="filterCategory('alternadores')"><i class="fas fa-sync"></i> Alternadores</a></li>
+            <li><a href="#" onclick="filterCategory('partida')"><i class="fas fa-key"></i> Motores de Partida</a></li>
+          </ul>
+        </li>
+        <li><a href="#brands-section" class="nav-link"><i class="fas fa-certificate"></i> Marcas</a></li>
+        <li><a href="#offers-section" class="nav-link"><i class="fas fa-tags"></i> Ofertas</a></li>
+        <li><a href="#contact-section" class="nav-link"><i class="fas fa-headset"></i> Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== MINI CART DROPDOWN ===== -->
+<div class="mini-cart" id="mini-cart">
+  <div class="mini-cart-header">
+    <h3><i class="fas fa-shopping-cart"></i> Meu Carrinho</h3>
+    <button onclick="toggleCart(event)" class="close-cart"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="mini-cart-items" id="mini-cart-items">
+    <p class="empty-cart-msg">Seu carrinho está vazio</p>
+  </div>
+  <div class="mini-cart-footer" id="mini-cart-footer" style="display:none;">
+    <div class="cart-total">Total: <strong id="cart-total">R$ 0,00</strong></div>
+    <button class="btn-checkout">Finalizar Compra <i class="fas fa-arrow-right"></i></button>
+  </div>
+</div>
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart(event)"></div>
+
+<!-- ===== VEHICLE BRAND SELECTOR ===== -->
+<section class="brand-selector-section" id="brand-selector">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title"><i class="fas fa-car"></i> Encontre a peça elétrica certa para seu carro em segundos</h2>
+      <p class="section-subtitle">Compatível com milhares de veículos. Rápido, fácil e seguro.</p>
+    </div>
+    
+    <div class="brand-cards-wrap">
+      <div class="brand-card" data-brand="fiat" data-color="#CC0000" data-color2="#FF3333" onclick="selectBrand(this)">
+        <div class="brand-logo-area">
+          <span class="brand-icon brand-fiat">FIAT</span>
+        </div>
+        <span class="brand-name">FIAT</span>
+        <span class="brand-tag">Palio, Uno, Argo, Strada...</span>
+      </div>
+      <div class="brand-card" data-brand="ford" data-color="#003399" data-color2="#0066FF" onclick="selectBrand(this)">
+        <div class="brand-logo-area">
+          <span class="brand-icon brand-ford">FORD</span>
+        </div>
+        <span class="brand-name">FORD</span>
+        <span class="brand-tag">Ka, EcoSport, Ranger...</span>
+      </div>
+      <div class="brand-card" data-brand="gm" data-color="#D4A826" data-color2="#FFD700" onclick="selectBrand(this)">
+        <div class="brand-logo-area">
+          <span class="brand-icon brand-gm">GM</span>
+        </div>
+        <span class="brand-name">GM - Chevrolet</span>
+        <span class="brand-tag">Onix, Cruze, S10, Tracker...</span>
+      </div>
+      <div class="brand-card" data-brand="vw" data-color="#001E50" data-color2="#0055BB" onclick="selectBrand(this)">
+        <div class="brand-logo-area">
+          <span class="brand-icon brand-vw">VW</span>
+        </div>
+        <span class="brand-name">VW - Volkswagen</span>
+        <span class="brand-tag">Gol, Polo, T-Cross, Saveiro...</span>
+      </div>
+      <div class="brand-card" data-brand="importados" data-color="#00AA55" data-color2="#00DD77" onclick="selectBrand(this)">
+        <div class="brand-logo-area">
+          <span class="brand-icon brand-import"><i class="fas fa-globe"></i></span>
+        </div>
+        <span class="brand-name">Importados</span>
+        <span class="brand-tag">Toyota, Honda, Hyundai, Jeep...</span>
+      </div>
+    </div>
+    <div class="brand-reset-wrap">
+      <button class="btn-reset-brand" onclick="resetBrand()">
+        <i class="fas fa-undo"></i> Ver Todas as Marcas
+      </button>
+      <div class="brand-selected-info" id="brand-selected-info"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HERO BANNER / CAROUSEL ===== -->
+<section class="hero-banner" id="hero-banner">
+  <div class="carousel-track" id="carousel-track">
+    <!-- Slide 1 -->
+    <div class="carousel-slide slide-1 active">
+      <div class="slide-lightning">
+        <div class="bolt bolt-1"><i class="fas fa-bolt"></i></div>
+        <div class="bolt bolt-2"><i class="fas fa-bolt"></i></div>
+        <div class="bolt bolt-3"><i class="fas fa-bolt"></i></div>
+      </div>
+      <div class="slide-content">
+        <div class="slide-badge">⚡ PROMOÇÃO RELÂMPAGO</div>
+        <h1 class="slide-title">Até <span class="highlight-text">40% OFF</span><br />em Peças Elétricas</h1>
+        <p class="slide-desc">Bobinas, Velas, Sensores e muito mais com desconto exclusivo!</p>
+        <div class="slide-actions">
+          <a href="#offers-section" class="btn-slide-primary"><i class="fas fa-bolt"></i> Ver Ofertas</a>
+          <a href="#categories" class="btn-slide-secondary">Explorar Peças</a>
+        </div>
+      </div>
+      <div class="slide-visual">
+        <div class="slide-parts-display">
+          <div class="part-float part-float-1">⚡</div>
+          <div class="part-float part-float-2">🔌</div>
+          <div class="part-float part-float-3">💡</div>
+          <div class="slide-badge-price">
+            <span class="price-from">De R$ 89,90</span>
+            <span class="price-to">Por R$ 59,90</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="carousel-slide slide-2">
+      <div class="slide-lightning">
+        <div class="bolt bolt-1"><i class="fas fa-bolt"></i></div>
+        <div class="bolt bolt-2"><i class="fas fa-bolt"></i></div>
+      </div>
+      <div class="slide-content">
+        <div class="slide-badge battery-badge">🔋 GARANTIA ESTENDIDA</div>
+        <h1 class="slide-title">Baterias com<br /><span class="highlight-text-blue">2 Anos</span> de Garantia</h1>
+        <p class="slide-desc">Frete grátis para todo o Brasil nas compras acima de R$ 299,90!</p>
+        <div class="slide-actions">
+          <a href="#" onclick="filterCategory('baterias')" class="btn-slide-primary btn-blue"><i class="fas fa-battery-full"></i> Ver Baterias</a>
+          <a href="#" class="btn-slide-secondary">Saiba Mais</a>
+        </div>
+      </div>
+      <div class="slide-visual">
+        <div class="slide-parts-display">
+          <div class="part-float part-float-1">🔋</div>
+          <div class="part-float part-float-2">⚡</div>
+          <div class="slide-badge-price blue-price">
+            <span class="price-from">De R$ 499,90</span>
+            <span class="price-to">Por R$ 389,90</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="carousel-slide slide-3">
+      <div class="slide-lightning">
+        <div class="bolt bolt-1"><i class="fas fa-bolt"></i></div>
+        <div class="bolt bolt-2"><i class="fas fa-bolt"></i></div>
+        <div class="bolt bolt-3"><i class="fas fa-bolt"></i></div>
+      </div>
+      <div class="slide-content">
+        <div class="slide-badge led-badge">💡 NOVO</div>
+        <h1 class="slide-title">Lâmpadas <span class="highlight-text-cyan">LED Premium</span><br />Máxima Iluminação</h1>
+        <p class="slide-desc">Tecnologia LED com vida útil 5x maior que as convencionais. Philips, Osram e mais!</p>
+        <div class="slide-actions">
+          <a href="#" onclick="filterCategory('lampadas')" class="btn-slide-primary btn-cyan"><i class="fas fa-lightbulb"></i> Ver Lâmpadas</a>
+          <a href="#" class="btn-slide-secondary">Comparar Modelos</a>
+        </div>
+      </div>
+      <div class="slide-visual">
+        <div class="slide-parts-display">
+          <div class="part-float part-float-1">💡</div>
+          <div class="part-float part-float-2">✨</div>
+          <div class="slide-badge-price cyan-price">
+            <span class="price-from">De R$ 159,90</span>
+            <span class="price-to">Por R$ 119,90</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel Controls -->
+  <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="carousel-btn carousel-next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+  <div class="carousel-dots" id="carousel-dots">
+    <button class="dot active" onclick="goToSlide(0)"></button>
+    <button class="dot" onclick="goToSlide(1)"></button>
+    <button class="dot" onclick="goToSlide(2)"></button>
+  </div>
+</section>
+
+<!-- ===== PRODUCT CATEGORIES GRID ===== -->
+<section class="categories-section" id="categories">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title"><i class="fas fa-bolt"></i> Peças Elétricas</h2>
+      <p class="section-subtitle">Encontre a peça certa para o seu veículo</p>
+    </div>
+    <div class="categories-grid">
+      <div class="category-card" data-cat="bobina" onclick="filterCategory('bobina')">
+        <div class="cat-icon-wrap">
+          <span class="cat-emoji">⚡</span>
+        </div>
+        <div class="cat-info">
+          <h3 class="cat-name">Bobina de Ignição</h3>
+          <p class="cat-price">A partir de <strong>R$ 89,90</strong></p>
+          <button class="btn-ver-produtos">Ver Produtos <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="cat-glow"></div>
+      </div>
+
+      <div class="category-card" data-cat="velas" onclick="filterCategory('velas')">
+        <div class="cat-icon-wrap">
+          <span class="cat-emoji">🔥</span>
+        </div>
+        <div class="cat-info">
+          <h3 class="cat-name">Velas de Ignição</h3>
+          <p class="cat-price">A partir de <strong>R$ 29,90</strong></p>
+          <button class="btn-ver-produtos">Ver Produtos <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="cat-glow"></div>
+      </div>
+
+      <div class="category-card" data-cat="baterias" onclick="filterCategory('baterias')">
+        <div class="cat-icon-wrap">
+          <span class="cat-emoji">🔋</span>
+        </div>
+        <div class="cat-info">
+          <h3 class="cat-name">Baterias</h3>
+          <p class="cat-price">A partir de <strong>R$ 299,90</strong></p>
+          <button class="btn-ver-produtos">Ver Produtos <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="cat-glow"></div>
+      </div>
+
+      <div class="category-card" data-cat="bomba" onclick="filterCategory('bomba')">
+        <div class="cat-icon-wrap">
+          <span class="cat-emoji">💧</span>
+        </div>
+        <div class="cat-info">
+          <h3 class="cat-name">Bomba de Combustível</h3>
+          <p class="cat-price">A partir de <strong>R$ 159,90</strong></p>
+          <button class="btn-ver-produtos">Ver Produtos <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="cat-glow"></div>
+      </div>
+
+      <div class="category-card" data-cat="sensores" onclick="filterCategory('sensores')">
+        <div class="cat-icon-wrap">
+          <span class="cat-emoji">📡</span>
+        </div>
+        <div class="cat-info">
+          <h3 class="cat-name">Sensores</h3>
+          <p class="cat-price">A partir de <strong>R$ 49,90</strong></p>
+          <button class="btn-ver-produtos">Ver Produtos <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="cat-glow"></div>
+      </div>
+
+      <div class="category-card" data-cat="lampadas" onclick="filterCategory('lampadas')">
+        <div class="cat-icon-wrap">
+          <span class="cat-emoji">💡</span>
+        </div>
+        <div class="cat-info">
+          <h3 class="cat-name">Lâmpadas</h3>
+          <p class="cat-price">A partir de <strong>R$ 19,90</strong></p>
+          <button class="btn-ver-produtos">Ver Produtos <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="cat-glow"></div>
+      </div>
+
+      <div class="category-card" data-cat="modulos" onclick="filterCategory('modulos')">
+        <div class="cat-icon-wrap">
+          <span class="cat-emoji">🖥️</span>
+        </div>
+        <div class="cat-info">
+          <h3 class="cat-name">Módulos</h3>
+          <p class="cat-price">A partir de <strong>R$ 119,90</strong></p>
+          <button class="btn-ver-produtos">Ver Produtos <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="cat-glow"></div>
+      </div>
+
+      <div class="category-card" data-cat="alternadores" onclick="filterCategory('alternadores')">
+        <div class="cat-icon-wrap">
+          <span class="cat-emoji">⚙️</span>
+        </div>
+        <div class="cat-info">
+          <h3 class="cat-name">Alternadores</h3>
+          <p class="cat-price">A partir de <strong>R$ 349,90</strong></p>
+          <button class="btn-ver-produtos">Ver Produtos <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="cat-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAMOUS BRANDS SECTION ===== -->
+<section class="brands-section" id="brands-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title"><i class="fas fa-certificate"></i> Marcas que Você Confia</h2>
+      <p class="section-subtitle">Trabalhamos com os melhores fabricantes do mercado</p>
+    </div>
+    <div class="brand-strip-wrap">
+      <div class="brand-strip" id="brand-strip">
+        <div class="brand-badge" style="--badge-color: #0066AA;" onclick="filterBrand('philips')">
+          <span class="badge-text philips-text">PHILIPS</span>
+          <span class="badge-sub">Iluminação & Elétrica</span>
+          <div class="badge-underline" style="background: #0066AA;"></div>
+        </div>
+        <div class="brand-badge" style="--badge-color: #FF7A00;" onclick="filterBrand('osram')">
+          <span class="badge-text osram-text">OSRAM</span>
+          <span class="badge-sub">Lâmpadas Premium</span>
+          <div class="badge-underline" style="background: #FF7A00;"></div>
+        </div>
+        <div class="brand-badge" style="--badge-color: #CC0000;" onclick="filterBrand('bosch')">
+          <span class="badge-text bosch-text">BOSCH</span>
+          <span class="badge-sub">Velas & Sensores</span>
+          <div class="badge-underline" style="background: #CC0000;"></div>
+        </div>
+        <div class="brand-badge" style="--badge-color: #009933;" onclick="filterBrand('ngk')">
+          <span class="badge-text ngk-text">NGK</span>
+          <span class="badge-sub">Velas Especialistas</span>
+          <div class="badge-underline" style="background: #009933;"></div>
+        </div>
+        <div class="brand-badge" style="--badge-color: #CC0000;" onclick="filterBrand('denso')">
+          <span class="badge-text denso-text">DENSO</span>
+          <span class="badge-sub">Injeção & Elétrica</span>
+          <div class="badge-underline" style="background: #CC0000;"></div>
+        </div>
+        <div class="brand-badge" style="--badge-color: #003399;" onclick="filterBrand('magneti')">
+          <span class="badge-text magneti-text">MAGNETI MARELLI</span>
+          <span class="badge-sub">Peças Originais</span>
+          <div class="badge-underline" style="background: #003399;"></div>
+        </div>
+        <div class="brand-badge" style="--badge-color: #7A7A7A;" onclick="filterBrand('importada')">
+          <span class="badge-text import-text">IMPORTADA</span>
+          <span class="badge-sub">Custo-Benefício</span>
+          <div class="badge-underline" style="background: #7A7A7A;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFFERS SECTION ===== -->
+<section class="offers-section" id="offers-section">
+  <div class="container">
+    <div class="section-header offers-header">
+      <h2 class="section-title offers-title">
+        <span class="fire-icon">🔥</span> Ofertas Especiais
+        <span class="lightning-icon"><i class="fas fa-bolt"></i></span>
+      </h2>
+      <div class="offer-countdown-global">
+        <span>Oferta termina em:</span>
+        <div class="countdown-display" id="countdown-global">
+          <div class="count-box"><span id="cd-hours">--</span><small>horas</small></div>
+          <div class="count-sep">:</div>
+          <div class="count-box"><span id="cd-mins">--</span><small>min</small></div>
+          <div class="count-sep">:</div>
+          <div class="count-box"><span id="cd-secs">--</span><small>seg</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offers-grid" id="offers-grid">
+      <!-- Offer Card 1 -->
+      <article class="offer-card">
+        <div class="offer-badge-pct">-32%</div>
+        <div class="offer-img-wrap">
+          <div class="offer-img-placeholder">
+            <span class="offer-part-icon">⚡</span>
+            <span class="offer-part-label">Bobina de Ignição</span>
+          </div>
+        </div>
+        <div class="offer-info">
+          <h3 class="offer-product-name">Kit Bobina Ignição Fiat Palio 1.0</h3>
+          <p class="offer-compat">Compatível: Fiat Palio, Uno, Siena 1.0 / 1.4</p>
+          <div class="offer-prices">
+            <span class="offer-price-old">De R$ 189,90</span>
+            <span class="offer-price-new">R$ 129,90</span>
+          </div>
+          <div class="offer-actions">
+            <button class="btn-add-cart" onclick="addToCart('Kit Bobina Ignição Fiat Palio 1.0', 129.90)">
+              <i class="fas fa-cart-plus"></i> Comprar
+            </button>
+            <button class="btn-details">Detalhes</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Offer Card 2 -->
+      <article class="offer-card">
+        <div class="offer-badge-pct">-22%</div>
+        <div class="offer-img-wrap">
+          <div class="offer-img-placeholder">
+            <span class="offer-part-icon">🔋</span>
+            <span class="offer-part-label">Bateria</span>
+          </div>
+        </div>
+        <div class="offer-info">
+          <h3 class="offer-product-name">Bateria Moura 60Ah Selada</h3>
+          <p class="offer-compat">Universal - 12V / Manutenção livre</p>
+          <div class="offer-prices">
+            <span class="offer-price-old">De R$ 499,90</span>
+            <span class="offer-price-new">R$ 389,90</span>
+          </div>
+          <div class="offer-actions">
+            <button class="btn-add-cart" onclick="addToCart('Bateria Moura 60Ah Selada', 389.90)">
+              <i class="fas fa-cart-plus"></i> Comprar
+            </button>
+            <button class="btn-details">Detalhes</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Offer Card 3 -->
+      <article class="offer-card">
+        <div class="offer-badge-pct">-34%</div>
+        <div class="offer-img-wrap">
+          <div class="offer-img-placeholder">
+            <span class="offer-part-icon">🔥</span>
+            <span class="offer-part-label">Velas NGK</span>
+          </div>
+        </div>
+        <div class="offer-info">
+          <h3 class="offer-product-name">Jogo Velas NGK Gol 1.0 8V</h3>
+          <p class="offer-compat">Compatível: VW Gol, Parati, Saveiro 1.0</p>
+          <div class="offer-prices">
+            <span class="offer-price-old">De R$ 89,90</span>
+            <span class="offer-price-new">R$ 59,90</span>
+          </div>
+          <div class="offer-actions">
+            <button class="btn-add-cart" onclick="addToCart('Jogo Velas NGK Gol 1.0 8V', 59.90)">
+              <i class="fas fa-cart-plus"></i> Comprar
+            </button>
+            <button class="btn-details">Detalhes</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Offer Card 4 -->
+      <article class="offer-card">
+        <div class="offer-badge-pct">-28%</div>
+        <div class="offer-img-wrap">
+          <div class="offer-img-placeholder">
+            <span class="offer-part-icon">💧</span>
+            <span class="offer-part-label">Bomba de Combustível</span>
+          </div>
+        </div>
+        <div class="offer-info">
+          <h3 class="offer-product-name">Bomba Combustível Flex Universal</h3>
+          <p class="offer-compat">Universal Flex - Pressão 3.5 bar</p>
+          <div class="offer-prices">
+            <span class="offer-price-old">De R$ 249,90</span>
+            <span class="offer-price-new">R$ 179,90</span>
+          </div>
+          <div class="offer-actions">
+            <button class="btn-add-cart" onclick="addToCart('Bomba Combustível Flex Universal', 179.90)">
+              <i class="fas fa-cart-plus"></i> Comprar
+            </button>
+            <button class="btn-details">Detalhes</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Offer Card 5 -->
+      <article class="offer-card">
+        <div class="offer-badge-pct">-25%</div>
+        <div class="offer-img-wrap">
+          <div class="offer-img-placeholder">
+            <span class="offer-part-icon">💡</span>
+            <span class="offer-part-label">Kit LED Philips</span>
+          </div>
+        </div>
+        <div class="offer-info">
+          <h3 class="offer-product-name">Kit Lâmpadas LED H7 Philips</h3>
+          <p class="offer-compat">Universal H7 - 6000K / 55W Equivalente</p>
+          <div class="offer-prices">
+            <span class="offer-price-old">De R$ 159,90</span>
+            <span class="offer-price-new">R$ 119,90</span>
+          </div>
+          <div class="offer-actions">
+            <button class="btn-add-cart" onclick="addToCart('Kit Lâmpadas LED H7 Philips', 119.90)">
+              <i class="fas fa-cart-plus"></i> Comprar
+            </button>
+            <button class="btn-details">Detalhes</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Offer Card 6 -->
+      <article class="offer-card">
+        <div class="offer-badge-pct">-30%</div>
+        <div class="offer-img-wrap">
+          <div class="offer-img-placeholder">
+            <span class="offer-part-icon">📡</span>
+            <span class="offer-part-label">Sensor Lambda</span>
+          </div>
+        </div>
+        <div class="offer-info">
+          <h3 class="offer-product-name">Sensor Oxigênio Lambda Universal</h3>
+          <p class="offer-compat">Universal - Sonda pré-catalisador / 4 fios</p>
+          <div class="offer-prices">
+            <span class="offer-price-old">De R$ 199,90</span>
+            <span class="offer-price-new">R$ 139,90</span>
+          </div>
+          <div class="offer-actions">
+            <button class="btn-add-cart" onclick="addToCart('Sensor Oxigênio Lambda Universal', 139.90)">
+              <i class="fas fa-cart-plus"></i> Comprar
+            </button>
+            <button class="btn-details">Detalhes</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="why-us-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title"><i class="fas fa-shield-alt"></i> Por que Escolher a RaiOn?</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Entrega Rápida</h3>
+        <p>Receba em até <strong>48 horas</strong> para as principais capitais do Brasil</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-lock"></i></div>
+        <h3>Compra Segura</h3>
+        <p>Pagamento <strong>100% protegido</strong> com criptografia SSL e antifraude</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fas fa-redo"></i></div>
+        <h3>Troca Fácil</h3>
+        <p><strong>30 dias</strong> para devolução ou troca sem burocracia</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="fab fa-whatsapp"></i></div>
+        <h3>Suporte Especializado</h3>
+        <p>Atendimento por <strong>WhatsApp</strong> com especialistas em elétrica automotiva</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact-section" id="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <img src="assests/logo/logo-raion-pecas.png" alt="RaiOn Peças Elétricas" class="contact-logo" />
+        <p class="contact-desc">Especialistas em peças elétricas automotivas para as principais marcas nacionais e importadas. Qualidade garantida com as melhores marcas do mercado.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/5500000000000" target="_blank">(00) 00000-0000</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>E-mail</strong>
+              <a href="mailto:contato@raionpecas.com.br">contato@raionpecas.com.br</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>Horário</strong>
+              <span>Seg–Sex: 8h–18h | Sáb: 8h–12h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="newsletter-form">
+        <h3><i class="fas fa-envelope-open-text"></i> Receba Nossas Ofertas</h3>
+        <p>Cadastre seu e-mail e fique por dentro das melhores promoções!</p>
+        <form onsubmit="subscribeNewsletter(event)">
+          <input type="text" placeholder="Seu nome" class="form-field" required />
+          <input type="email" placeholder="Seu melhor e-mail" class="form-field" required />
+          <button type="submit" class="btn-newsletter">
+            <i class="fas fa-paper-plane"></i> Quero Receber Ofertas!
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-col-title">Institucional</h4>
+          <ul class="footer-links">
+            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Trocas e Devoluções</a></li>
+            <li><a href="#">Rastrear Pedido</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Categorias</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="filterCategory('bobina')">Bobinas de Ignição</a></li>
+            <li><a href="#" onclick="filterCategory('velas')">Velas de Ignição</a></li>
+            <li><a href="#" onclick="filterCategory('baterias')">Baterias</a></li>
+            <li><a href="#" onclick="filterCategory('sensores')">Sensores</a></li>
+            <li><a href="#" onclick="filterCategory('lampadas')">Lâmpadas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Marcas</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="filterBrand('philips')">Philips</a></li>
+            <li><a href="#" onclick="filterBrand('osram')">Osram</a></li>
+            <li><a href="#" onclick="filterBrand('bosch')">Bosch</a></li>
+            <li><a href="#" onclick="filterBrand('ngk')">NGK</a></li>
+            <li><a href="#" onclick="filterBrand('denso')">Denso</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Formas de Pagamento</h4>
+          <div class="payment-icons">
+            <div class="payment-icon pix-icon"><i class="fas fa-qrcode"></i><span>PIX</span></div>
+            <div class="payment-icon"><i class="fas fa-credit-card"></i><span>Cartão</span></div>
+            <div class="payment-icon"><i class="fas fa-barcode"></i><span>Boleto</span></div>
+          </div>
+          <h4 class="footer-col-title" style="margin-top:1.5rem;">Siga-nos</h4>
+          <div class="footer-social">
+            <a href="#" class="fsocial-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="fsocial-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="fsocial-link"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.me/5500000000000" class="fsocial-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p>© 2025 RaiOn Peças Elétricas Online — Todos os direitos reservados</p>
+        <p class="cnpj-info">CNPJ: 00.000.000/0001-00 | Endereço: Rua das Peças Elétricas, 1000 – Brasil</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<button class="back-to-top" id="back-to-top" onclick="scrollToTop()" title="Voltar ao topo">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- ===== MODALS ===== -->
+<div class="modal-overlay" id="loginModal" onclick="closeModalOutside(event, 'loginModal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('loginModal')"><i class="fas fa-times"></i></button>
+    <h2 class="modal-title"><i class="fas fa-bolt"></i> Entrar na Conta</h2>
+    <form onsubmit="doLogin(event)">
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" class="modal-field" placeholder="seu@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" class="modal-field" placeholder="••••••••" autocomplete="current-password" required />
+      </div>
+      <button type="submit" class="btn-modal-submit">Entrar <i class="fas fa-arrow-right"></i></button>
+    </form>
+    <p class="modal-footer-text">Não tem conta? <a href="#" onclick="switchModal('loginModal','registerModal')">Cadastre-se</a></p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="registerModal" onclick="closeModalOutside(event, 'registerModal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('registerModal')"><i class="fas fa-times"></i></button>
+    <h2 class="modal-title"><i class="fas fa-user-plus"></i> Criar Conta</h2>
+    <form onsubmit="doRegister(event)">
+      <div class="form-group">
+        <label>Nome Completo</label>
+        <input type="text" class="modal-field" placeholder="Seu nome" required />
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" class="modal-field" placeholder="seu@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" class="modal-field" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required />
+      </div>
+      <div class="form-group">
+        <label>WhatsApp</label>
+        <input type="tel" class="modal-field" placeholder="(00) 00000-0000" />
+      </div>
+      <button type="submit" class="btn-modal-submit">Criar Conta <i class="fas fa-arrow-right"></i></button>
+    </form>
+    <p class="modal-footer-text">Já tem conta? <a href="#" onclick="switchModal('registerModal','loginModal')">Entrar</a></p>
+  </div>
+</div>
+
+<!-- ===== NOTIFICATION TOAST ===== -->
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle" id="toast-icon"></i>
+  <span id="toast-msg">Mensagem</span>
+</div>
+
+<!-- ===== SEARCH RESULTS OVERLAY ===== -->
+<div class="search-overlay" id="search-results-overlay" style="display:none;">
+  <div class="search-results-box">
+    <button class="close-search-results" onclick="closeSearchResults()"><i class="fas fa-times"></i></button>
+    <h3 id="search-results-title">Resultados da Busca</h3>
+    <div id="search-results-content"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<a href="#" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+    <span>Falar com especialista</span>
+</a>
+
+</a>
+</body>
+</html>
