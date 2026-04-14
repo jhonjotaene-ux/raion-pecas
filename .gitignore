@@ -1,0 +1,82 @@
+# =========================
+# 🔥 SISTEMA OPERACIONAL
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# 🔐 VARIÁVEIS DE AMBIENTE
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# 📦 NODE / JAVASCRIPT
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# 🧪 TESTES / COBERTURA
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# ⚙️ BUILD / DIST
+# =========================
+dist/
+build/
+.next/
+out/
+
+# =========================
+# ⚡ CACHE / TEMP
+# =========================
+.cache/
+.parcel-cache/
+.tmp/
+.temp/
+
+# =========================
+# 🧠 EDITORES / IDEs
+# =========================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# =========================
+# 📁 LOGS
+# =========================
+logs/
+*.log
+
+# =========================
+# 📷 UPLOADS / ARQUIVOS TEMP
+# =========================
+uploads/
+tmp/
+*.zip
+*.rar
+
+# =========================
+# 🔑 CHAVES E SEGURANÇA
+# =========================
+*.pem
+*.key
+*.crt
+
+# =========================
+# 🚫 ARQUIVOS DESNECESSÁRIOS
+# =========================
+*.bak
+*.swp
+*.old
